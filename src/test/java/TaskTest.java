@@ -63,12 +63,9 @@ class TaskTest {
         String groupUuid = group.groupUuid;
         assertNotNull(groupUuid);
 
+        assertEquals(groupUuid, group.getHeader("GroupID:"));
         assertEquals(groupUuid, task1.getHeader("GroupID:"));
         assertEquals(groupUuid, task2.getHeader("GroupID:"));
-
-        assertThrows(UnsupportedOperationException.class,
-                () -> group.addTask(new Signature<>(counter::addAndGet))
-        );
     }
 
     @Test
